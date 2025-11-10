@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ejercicio 2 - Nombre más largo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 2</h1>
+
+    {% if errores %}
+      <div class="errors">
+        <ul>
+          {% for e in errores %}
+            <li>{{ e }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <form method="post" action="{{ url_for('ejercicio2') }}">
+      <label>Nombre 1:
+        <input type="text" name="nombre1" required>
+      </label>
+      <label>Nombre 2:
+        <input type="text" name="nombre2" required>
+      </label>
+      <label>Nombre 3:
+        <input type="text" name="nombre3" required>
+      </label>
+      <button type="submit" class="btn">Enviar</button>
+      <a class="btn secondary" href="{{ url_for('index') }}">Volver</a>
+    </form>
+
+    {% if resultado %}
+      <div class="result">
+        <h2>Resultado</h2>
+        <p>Nombres ingresados: {{ resultado.todos | join(', ') }}</p>
+        <p><strong>Nombre más largo:</strong> {{ resultado.nombre_mas_largo }}</p>
+        <p><strong>Cantidad de caracteres:</strong> {{ resultado.longitud }}</p>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

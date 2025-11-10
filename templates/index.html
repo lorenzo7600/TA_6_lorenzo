@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Menú Principal - Práctica Flask</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container-index">
+
+    <div class="buttons-index">
+      <a class="btn" href="{{ url_for('ejercicio1') }}">Ejercicio 1</a>
+      <a class="btn" href="{{ url_for('ejercicio2') }}">Ejercicio 2</a>
+    </div>
+  </div>
+</body>
+</html>

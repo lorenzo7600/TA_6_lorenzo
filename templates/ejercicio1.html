@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ejercicio 1 - Notas y Asistencia</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Ejercicio 1</h1>
+
+    {% if errores %}
+      <div class="errors">
+        <ul>
+          {% for e in errores %}
+            <li>{{ e }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <form method="post" action="{{ url_for('ejercicio1') }}">
+      <label>Nota 1:
+        <input type="number" name="nota1" min="10" max="70" step="0.01" required>
+      </label>
+      <label>Nota 2:
+        <input type="number" name="nota2" min="10" max="70" step="0.01" required>
+      </label>
+      <label>Nota 3:
+        <input type="number" name="nota3" min="10" max="70" step="0.01" required>
+      </label>
+      <label>Asistencia (%):
+        <input type="number" name="asistencia" min="0" max="100" step="0.01" required>
+      </label>
+      <button type="submit" class="btn">Enviar</button>
+      <a class="btn secondary" href="{{ url_for('index') }}">Volver</a>
+    </form>
+
+    {% if resultado %}
+      <div class="result">
+        <h2>Resultado</h2>
+        <p>Nota 1: {{ resultado.nota1 }}</p>
+        <p>Nota 2: {{ resultado.nota2 }}</p>
+        <p>Nota 3: {{ resultado.nota3 }}</p>
+        <p><strong>Promedio:</strong> {{ resultado.promedio }}</p>
+        <p><strong>Asistencia:</strong> {{ resultado.asistencia }}%</p>
+        <p><strong>Estado:</strong> {{ resultado.estado }}</p>
+        <p class="muted">Criterio usado: {{ resultado.criterio }}</p>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
